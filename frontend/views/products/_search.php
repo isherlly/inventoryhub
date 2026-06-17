@@ -4,28 +4,25 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var common\models\OdersSearch $model */
+/** @var common\models\ProductSearch $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="orders-search">
+<div class="product-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options' => [
+            'data-pjax' => 1
+        ],
     ]); ?>
 
-    <?= $form->field($model, 'order_id') ?>
+    <?= $form->field($model, 'product_name') ?>
 
-    <?= $form->field($model, 'stock_id') ?>
+    <?= $form->field($model, 'category') ?>
 
-    <?= $form->field($model, 'user_name') ?>
-
-    <?= $form->field($model, 'department') ?>
-
-    <?= $form->field($model, 'amount') ?>
-
-    <?php // echo $form->field($model, 'place') ?>
+    <?= $form->field($model, 'stock_quantity') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

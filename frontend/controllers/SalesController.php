@@ -1,26 +1,37 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
-use common\models\orders;
-use common\models\OdersSearch;
+use common\models\Sale;
+use common\models\SaleSearch;
+use common\models\Product;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * OdersController implements the CRUD actions for orders model.
+ * SalesController implements the CRUD actions for Sale model.
  */
-class OdersController extends Controller
+class SalesController extends Controller
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -32,13 +43,13 @@ class OdersController extends Controller
     }
 
     /**
-     * Lists all orders models.
+     * Lists all Sale models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new OdersSearch();
+        $searchModel = new SaleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,84 +59,89 @@ class OdersController extends Controller
     }
 
     /**
-     * Displays a single orders model.
-     * @param int $order_id Order ID
+     * Displays a single Sale model.
+     *
+     * @param int $sale_id Sale ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($order_id)
+    public function actionView($sale_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($order_id),
+            'model' => $this->findModel($sale_id),
         ]);
     }
 
     /**
-     * Creates a new orders model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Creates a new Sale model.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new orders();
+        $model = new Sale();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'order_id' => $model->order_id]);
+                return $this->redirect(['view', 'sale_id' => $model->sale_id]);
             }
         } else {
             $model->loadDefaultValues();
+            $model->sale_date = date('Y-m-d H:i:s');
         }
 
+        $products = Product::find()->all();
         return $this->render('create', [
             'model' => $model,
+            'products' => $products,
         ]);
     }
 
     /**
-     * Updates an existing orders model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $order_id Order ID
+     * Updates an existing Sale model.
+     *
+     * @param int $sale_id Sale ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($order_id)
+    public function actionUpdate($sale_id)
     {
-        $model = $this->findModel($order_id);
+        $model = $this->findModel($sale_id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'order_id' => $model->order_id]);
+            return $this->redirect(['view', 'sale_id' => $model->sale_id]);
         }
 
+        $products = Product::find()->all();
         return $this->render('update', [
             'model' => $model,
+            'products' => $products,
         ]);
     }
 
     /**
-     * Deletes an existing orders model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $order_id Order ID
+     * Deletes an existing Sale model.
+     *
+     * @param int $sale_id Sale ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($order_id)
+    public function actionDelete($sale_id)
     {
-        $this->findModel($order_id)->delete();
-
+        $this->findModel($sale_id)->delete();
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the orders model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $order_id Order ID
-     * @return orders the loaded model
+     * Finds the Sale model based on its primary key value.
+     *
+     * @param int $sale_id Sale ID
+     * @return Sale the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($order_id)
+    protected function findModel($sale_id)
     {
-        if (($model = orders::findOne(['order_id' => $order_id])) !== null) {
+        if (($model = Sale::findOne(['sale_id' => $sale_id])) !== null) {
             return $model;
         }
 

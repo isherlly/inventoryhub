@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
                         <h2 class="fw-bold mb-2">🔐 Welcome Back</h2>
-                        <p class="text-muted">Business Management System</p>
+                        <p class="text-muted">Inventory Control System</p>
                     </div>
 
                     <p class="text-muted text-center mb-4">
@@ -64,12 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= Html::a('Resend', ['site/resend-verification-email'], ['class' => 'text-decoration-none']) ?>
                     </p>
                 </div>
-            </div>
-
-            <div class="mt-4 text-center">
-                <small class="text-muted">
-                    © 2024 Business Management System. All rights reserved.
-                </small>
             </div>
         </div>
     </div>

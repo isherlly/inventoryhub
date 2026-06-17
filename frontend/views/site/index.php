@@ -5,16 +5,16 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Business Management System';
+$this->title = ' Inventory Control System - Smart Stock Management';
 ?>
 <div class="site-index">
 
     <!-- Hero Section -->
-    <div class="p-5 mb-5 bg-gradient rounded-lg shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+    <div class="p-5 mb-5 hero-banner rounded-lg shadow-sm">
         <div class="container-fluid py-5">
             <div class="text-center">
-                <h1 class="display-3 fw-bold mb-3">📊 Business Management System</h1>
-                <p class="fs-5 fw-light mb-4">Comprehensive inventory, sales, and business analytics platform</p>
+                <h1 class="display-3 fw-bold mb-3">📊 Inventory Control System</h1>
+                <p class="fs-5 fw-light mb-4">Smart stock tracking, real-time alerts, and complete inventory control at your fingertips</p>
                 <?php if (Yii::$app->user->isGuest): ?>
                     <p>
                         <?= Html::a('🚀 Get Started', ['/site/signup'], ['class' => 'btn btn-light btn-lg me-2']) ?>
@@ -22,7 +22,7 @@ $this->title = 'Business Management System';
                     </p>
                 <?php else: ?>
                     <p>
-                        <?= Html::a('📊 Go to Dashboard', ['http://localhost/karume-yii2/backend'], ['class' => 'btn btn-light btn-lg']) ?>
+                        <?= Html::a('📊 Go to Dashboard', 'http://localhost/inventory-yii2/backend/web/index.php?r=reports%2Fdashboard', ['class' => 'btn btn-light btn-lg']) ?>
                     </p>
                 <?php endif; ?>
             </div>
@@ -140,7 +140,7 @@ $this->title = 'Business Management System';
     <!-- CTA Section -->
     <div class="container-fluid py-5 text-center">
         <h2 class="mb-4 fw-bold">Ready to Transform Your Business?</h2>
-        <p class="fs-5 text-muted mb-4">Start using our comprehensive business management system today</p>
+        <p class="fs-5 text-muted mb-4">Take control of your inventory with advanced tracking, automated alerts, and powerful insights</p>
         <?php if (Yii::$app->user->isGuest): ?>
             <p>
                 <?= Html::a('Sign Up Now', ['/site/signup'], ['class' => 'btn btn-primary btn-lg me-2']) ?>
@@ -149,14 +149,19 @@ $this->title = 'Business Management System';
         <?php else: ?>
             <p>
                 <?= Html::a('View My Orders', ['/orders/index'], ['class' => 'btn btn-primary btn-lg me-2']) ?>
-                <?= Html::a('Backend Dashboard', ['http://localhost/karume-yii2/backend'], ['class' => 'btn btn-outline-primary btn-lg']) ?>
+                <?= Html::a('Backend Dashboard', 'http://localhost/inventory-yii2/backend/web/index.php', ['class' => 'btn btn-outline-primary btn-lg']) ?>
             </p>
         <?php endif; ?>
     </div>
 
     <style>
-        .bg-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .hero-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: #ffffff !important;
+        }
+        .hero-banner h1,
+        .hero-banner p {
+            color: #ffffff !important;
         }
         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -167,7 +172,4 @@ $this->title = 'Business Management System';
         }
     </style>
 
-</div>
-
-    </div>
 </div>

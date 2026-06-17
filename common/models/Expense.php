@@ -32,4 +32,13 @@ class Expense extends \yii\db\ActiveRecord
             'expense_date' => 'Date',
         ];
     }
+
+    /**
+     * Gets the staff member responsible for this expense (if applicable)
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStaff()
+    {
+        return $this->hasOne(Staff::class, ['staff_id' => 'staff_id']);
+    }
 }

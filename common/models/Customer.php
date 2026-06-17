@@ -56,4 +56,13 @@ class Customer extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+
+    /**
+     * Gets related sales for this customer
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSales()
+    {
+        return $this->hasMany(Sale::class, ['customer_id' => 'customer_id']);
+    }
 }

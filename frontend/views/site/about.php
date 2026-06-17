@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row mb-5">
         <div class="col-md-8">
             <div class="card shadow-sm border-0 p-4">
-                <h3 class="mb-3">About Our Business Management System</h3>
+                <h3 class="mb-3">About Inventory Control System</h3>
                 <p class="text-muted">
-                    Our comprehensive Business Management System is designed to help small and medium-sized businesses 
+                    Our advanced Inventory Control System is designed to help businesses of all sizes manage their stock efficiently 
                     streamline their operations, track inventory, manage sales, and make data-driven decisions.
                 </p>
 
@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card shadow-sm border-0 p-4">
                 <h5 class="mb-3 fw-bold">🚀 Getting Started</h5>
                 <p class="text-muted small">
-                    Ready to streamline your business? 
+                    Ready to streamline your inventory? 
                     <?= Html::a('Create an account', ['/site/signup'], ['class' => 'text-decoration-none']) ?> 
                     to get started with our system.
                 </p>

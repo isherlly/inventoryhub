@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="mt-4 text-center">
                 <small class="text-muted">
-                    © 2024 Business Management System. All rights reserved.
+                    © 2024 Inventory Control System. All rights reserved.
                 </small>
             </div>
         </div>

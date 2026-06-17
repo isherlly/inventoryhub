@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-8 mx-auto">
             <div class="text-center mb-5">
                 <h1 class="mb-2">💬 Get In Touch</h1>
-                <p class="text-muted fs-5">Have questions about our Business Management System? We're here to help!</p>
+                <p class="text-muted fs-5">Have questions about our Inventory Control System? We're here to help you manage your stock efficiently!</p>
             </div>
         </div>
     </div>

@@ -36,4 +36,13 @@ class Staff extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
+    /**
+     * Gets related sales for this staff member
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSales()
+    {
+        return $this->hasMany(Sale::class, ['staff_id' => 'staff_id']);
+    }
 }

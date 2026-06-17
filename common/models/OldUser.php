@@ -23,7 +23,7 @@ class OldUser extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'old user';
+        return '{{%old_users}}';
     }
 
     /**

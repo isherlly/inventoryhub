@@ -1,6 +1,6 @@
 <?php
 
-use common\models\orders;
+use common\models\Orders;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

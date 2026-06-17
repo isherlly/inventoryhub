@@ -174,7 +174,7 @@ $yearMargin = $yearRevenue > 0 ? ($yearProfit / $yearRevenue) * 100 : 0;
                                     <tr>
                                         <th>#</th>
                                         <th>Product Name</th>
-                                        <th class="text-right">Total Profit</th>
+                                        <th class="text-end">Total Profit</th>
                                         <th class="text-center">Current Stock</th>
                                     </tr>
                                 </thead>
@@ -183,7 +183,7 @@ $yearMargin = $yearRevenue > 0 ? ($yearProfit / $yearRevenue) * 100 : 0;
                                         <tr>
                                             <td><span class="badge badge-primary"><?= $i++ ?></span></td>
                                             <td><?= Html::encode($item['product']->product_name) ?></td>
-                                            <td class="text-right text-success font-weight-bold">Tsh<?= number_format($item['totalProfit'], 2) ?></td>
+                                            <td class="text-end text-success font-weight-bold">Tsh<?= number_format($item['totalProfit'], 2) ?></td>
                                             <td class="text-center">
                                                 <?php if ($item['product']->stock_quantity <= 5): ?>
                                                     <span class="badge badge-danger"><?= $item['product']->stock_quantity ?></span>
@@ -206,8 +206,15 @@ $yearMargin = $yearRevenue > 0 ? ($yearProfit / $yearRevenue) * 100 : 0;
         </div>
     </div>
 
-    <!-- Custom CSS for card borders -->
+    <!-- Custom CSS for card borders and micro-interactions -->
     <style>
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+        }
         .border-left-primary {
             border-left: 4px solid #007bff !important;
         }
@@ -222,7 +229,7 @@ $yearMargin = $yearRevenue > 0 ? ($yearProfit / $yearRevenue) * 100 : 0;
         }
         .text-primary { color: #007bff; }
         .text-success { color: #28a745; }
-        .text-warning { color: #ffc107; color: #000; }
+        .text-warning { color: #ffc107; }
         .text-info { color: #17a2b8; }
         .text-danger { color: #dc3545; }
     </style>

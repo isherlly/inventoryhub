@@ -48,17 +48,44 @@ AppAsset::register($this);
         .btn-primary:hover {
             background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
-        .footer {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
+        footer.footer {
+            --bs-heading-color: #ffffff;
+            --bs-secondary-color: #ffffff;
+            --bs-link-color: #ffffff;
+            background-color: #231146 !important;
+            background: linear-gradient(90deg, #434190 0%, #5a3d8a 100%) !important;
+            color: #ffffff !important;
             margin-top: auto;
+            padding-bottom: 8.5rem !important;
         }
-        .footer a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
+        footer.footer,
+        footer.footer h6,
+        footer.footer p,
+        footer.footer small,
+        footer.footer a,
+        footer.footer .footer-desc,
+        footer.footer .footer-copyright {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            -webkit-text-fill-color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
         }
-        .footer a:hover {
-            color: white;
+        footer.footer a {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+        footer.footer a:hover {
+            color: #f8f9fa !important;
+            -webkit-text-fill-color: #1e4974 !important;
+        }
+        footer.footer h6 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        footer.footer .footer-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -75,14 +102,16 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '🏠 Home', 'url' => ['/site/index']],
-        ['label' => 'ℹ️ About', 'url' => ['/site/about']],
-        ['label' => '💬 Contact', 'url' => ['/site/contact']],
+    
     ];
     
     if (!Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => '📋 Orders', 'url' => ['/orders/index']];
-    }
+    $menuItems[] = ['label' => '📊 Dashboard', 'url' => ['/site/dashboard']];
+    $menuItems[] = ['label' => '📦 Products', 'url' => ['/products/index']];
+    $menuItems[] = ['label' => '🛒 Sales', 'url' => ['/sales/index']];
+    $menuItems[] = ['label' => '🚚 Purchases', 'url' => ['/purchases/index']];
+    $menuItems[] = ['label' => '🏢 Suppliers', 'url' => ['/suppliers/index']];
+}
     
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '🚀 Sign Up', 'url' => ['/site/signup']];
@@ -121,31 +150,23 @@ AppAsset::register($this);
     </div>
 </main>
 
-<footer class="footer mt-auto py-4 text-center text-white">
+<footer class="footer mt-auto py-4 text-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-3 mb-md-0">
-                <h6>📊 Business Management System</h6>
-                <small>Complete business solution for inventory & sales</small>
+            <div class="col-md-12 mb-3 mb-md-0">
+                <h6>📊 Inventory Control System</h6>
+                <p class="footer-desc mb-0">Smart inventory management for modern businesses</p>
             </div>
-            <div class="col-md-4 mb-3 mb-md-0">
-                <h6>Quick Links</h6>
-                <small>
-                    <?= Html::a('Home', ['/site/index'], ['class' => 'text-white me-2']) ?>
-                    <?= Html::a('About', ['/site/about'], ['class' => 'text-white me-2']) ?>
-                    <?= Html::a('Contact', ['/site/contact'], ['class' => 'text-white']) ?>
-                </small>
+            <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->username === 'admin'): ?>
+            <div class="col-md-12 mt-2">
+                <p class="footer-desc mb-0">
+                    <?= Html::a('📈 Admin Backend', 'http://localhost/inventory-yii2/backend/web/', ['target' => '_blank']) ?>
+                </p>
             </div>
-            <div class="col-md-4">
-                <h6>Backend Access</h6>
-                <small>
-                    <?= Html::a('📈 Dashboard', 'http://localhost/karume-yii2/backend', 
-                        ['class' => 'text-white', 'target' => '_blank']) ?>
-                </small>
-            </div>
+            <?php endif; ?>
         </div>
-        <hr class="my-3" style="border-color: rgba(255,255,255,0.2);">
-        <p class="mb-0">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?> | All rights reserved</p>
+        <hr class="my-3 border-light opacity-50">
+        <p class="footer-copyright mb-0">&copy; 2026 Inventory Control System. All rights reserved</p>
     </div>
 </footer>
 
